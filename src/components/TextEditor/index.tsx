@@ -5,10 +5,21 @@ import viewIcon from '../../assets/icons/icon-show-preview.svg';
 type Props = {
     isPreview: boolean;
     setIsPreview: (val: boolean) => void;
+    content: string;
+    setContent: (val: string) => void;
 };
 
-const TextEditor = ({ isPreview, setIsPreview }: Props) => {
+const TextEditor = ({
+    isPreview,
+    setIsPreview,
+    content,
+    setContent,
+}: Props) => {
     const handleIconClick = () => setIsPreview(true);
+    const handleChange = (e: any) => {
+        const { value } = e.target;
+        setContent(value);
+    };
 
     return (
         <div
@@ -23,7 +34,11 @@ const TextEditor = ({ isPreview, setIsPreview }: Props) => {
                 iconStyles="md:hidden"
             />
             <ContentContainer>
-                <textarea className="font-roboto-mono text-lighter-gray text-sm outline-none bg-black w-full h-full resize-none"></textarea>
+                <textarea
+                    className="font-roboto-mono text-lighter-gray text-sm outline-none bg-black w-full h-full resize-none"
+                    value={content}
+                    onChange={handleChange}
+                />
             </ContentContainer>
         </div>
     );
