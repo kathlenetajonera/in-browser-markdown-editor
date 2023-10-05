@@ -22,6 +22,13 @@ export default {
                 'lighter-gray': '#c1c4cb',
                 'dark-gray': '#35393f',
                 'gray-text': '#7c8187',
+                sidebar: '#1d1f22',
+            },
+            translate: {
+                sidebar: '15.625rem',
+            },
+            width: {
+                sidebar: '15.625rem',
             },
         },
     },

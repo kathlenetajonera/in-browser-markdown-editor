@@ -1,0 +1,25 @@
+import Button from '../Button';
+import DocumentList from '../DocumentList';
+
+type Props = {
+    isNavOpen: boolean;
+};
+
+const Sidebar = ({ isNavOpen }: Props) => {
+    return (
+        <nav
+            className={`h-full bg-sidebar p-6 w-sidebar fixed top-0 left-0 transition-transform ease-in-out duration-300 ${
+                isNavOpen ? 'translate-x-[0]' : '-translate-x-sidebar'
+            }`}
+        >
+            <h3 className="text-gray-text mb-6 text-sm tracking-[2px]">
+                MY DOCUMENTS
+            </h3>
+            <Button label="+ New Document" handleClick={() => {}} />
+
+            <DocumentList />
+        </nav>
+    );
+};
+
+export default Sidebar;
