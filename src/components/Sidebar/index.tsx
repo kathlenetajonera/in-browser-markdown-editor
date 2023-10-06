@@ -1,5 +1,6 @@
 import Button from '../Button';
 import DocumentList from '../DocumentList';
+import ModeToggle from '../ModeToggle';
 
 type Props = {
     isNavOpen: boolean;
@@ -16,8 +17,8 @@ const Sidebar = ({ isNavOpen }: Props) => {
                 MY DOCUMENTS
             </h3>
             <Button label="+ New Document" handleClick={() => {}} />
-
             <DocumentList />
+            <ModeToggle />
         </nav>
     );
 };

@@ -7,7 +7,7 @@ type Props = {
 
 const ContentHeader = ({ title, icon, handleIconClick, iconStyles }: Props) => {
     return (
-        <div className="flex items-center justify-between py-3 px-4 bg-[#1e2022]">
+        <div className="flex items-center justify-between py-3 px-4 bg-light-gray dark:bg-[#1e2022] transition-[background]">
             <h3 className="text-sm text-gray-text font-medium tracking-[2px]">
                 {title}
             </h3>

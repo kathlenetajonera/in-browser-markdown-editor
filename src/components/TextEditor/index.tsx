@@ -35,7 +35,7 @@ const TextEditor = ({
             />
             <ContentContainer>
                 <textarea
-                    className="font-roboto-mono text-lighter-gray text-sm outline-none bg-black w-full h-full resize-none"
+                    className="font-roboto-mono text-dark-gray dark:text-lighter-gray text-sm outline-none bg-white dark:bg-black w-full h-full resize-none transition-[background]"
                     value={content}
                     onChange={handleChange}
                 />

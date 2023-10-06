@@ -46,7 +46,7 @@ const Preview = ({ isPreview, setIsPreview, content }: Props) => {
 
     return (
         <div
-            className={`text-white flex-1 h-full ${
+            className={`text-dark-gray dark:text-white flex-1 h-full ${
                 isPreview ? 'flex flex-col' : 'hidden md:flex md:flex-col'
             }`}
         >
