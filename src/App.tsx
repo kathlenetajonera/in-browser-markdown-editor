@@ -7,7 +7,7 @@ function App() {
     const [isNavOpen, setIsNavOpen] = useState(false);
 
     return (
-        <div className="font-roboto overflow-x-hidden">
+        <div className="font-roboto overflow-hidden">
             <Sidebar isNavOpen={isNavOpen} />
 
             <main

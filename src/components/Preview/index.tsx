@@ -55,7 +55,7 @@ const Preview = ({ isPreview, setIsPreview, content }: Props) => {
                 icon={isPreview ? hideIcon : viewIcon}
                 handleIconClick={handleIconClick}
             />
-            <ContentContainer customClass="font-roboto-slab overflow-y-auto">
+            <ContentContainer customClass="font-roboto-slab overflow-y-auto pt-8 pb-12 px-6">
                 <Markdown options={options}>{content}</Markdown>
             </ContentContainer>
         </div>
