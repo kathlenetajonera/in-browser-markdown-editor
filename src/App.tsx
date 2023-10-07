@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Content from './components/Content';
+import Attribution from './components/Attribution';
 import data from './json/data.json';
 import { Data } from './types';
 
@@ -60,6 +61,7 @@ function App() {
                 >
                     <Header />
                     <Content />
+                    <Attribution />
                 </main>
             </div>
         </AppContext.Provider>

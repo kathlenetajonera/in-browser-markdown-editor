@@ -6,7 +6,6 @@ import Logo from '../Logo';
 import InputField from '../InputField';
 import DeleteIcon from '../DeleteIcon';
 import Button from '../Button';
-import Modal from '../Modal';
 import icon from '../../assets/icons/icon-save.svg';
 
 const Header = () => {
@@ -21,7 +20,6 @@ const Header = () => {
     } = useContext(AppContext);
     const currentId = selectedDocument?.id;
     const [isLoading, setIsLoading] = useState(false);
-    const [showModal, setShowModal] = useState(false);
 
     const handleSave = () => {
         setIsLoading(true);
@@ -42,7 +40,6 @@ const Header = () => {
 
         setTimeout(() => {
             setIsLoading(false);
-            setShowModal(true);
         }, 1000);
     };
 
@@ -79,21 +76,14 @@ const Header = () => {
                         <Button
                             isLoading={isLoading}
                             icon={icon}
-                            label="Save changes"
+                            label={
+                                isLoading ? 'Saving changes' : 'Save changes'
+                            }
                             handleClick={handleSave}
                         />
                     </div>
                 )}
             </div>
-
-            <Modal
-                show={showModal}
-                onClickOutside={() => setShowModal(false)}
-                title="Document has been saved."
-                subtitle="You may download the file or click outside of the modal to close."
-                buttonLabel="Download document"
-                handleClick={() => {}}
-            />
         </div>
     );
 };
