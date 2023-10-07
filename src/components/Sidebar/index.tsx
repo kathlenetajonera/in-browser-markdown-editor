@@ -1,12 +1,12 @@
+import { useContext } from 'react';
+import { AppContext } from '../../App';
 import Button from '../Button';
 import DocumentList from '../DocumentList';
 import ModeToggle from '../ModeToggle';
 
-type Props = {
-    isNavOpen: boolean;
-};
+const Sidebar = () => {
+    const { isNavOpen } = useContext(AppContext);
 
-const Sidebar = ({ isNavOpen }: Props) => {
     return (
         <nav
             className={`h-full bg-sidebar p-6 w-sidebar fixed top-0 left-0 transition-transform ease-in-out duration-300 ${

@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { AppContext } from '../../App';
 import ContentHeader from '../ContentHeader';
 import ContentContainer from '../ContentContainer';
 import viewIcon from '../../assets/icons/icon-show-preview.svg';
@@ -5,20 +7,20 @@ import viewIcon from '../../assets/icons/icon-show-preview.svg';
 type Props = {
     isPreview: boolean;
     setIsPreview: (val: boolean) => void;
-    content: string;
-    setContent: (val: string) => void;
 };
 
-const TextEditor = ({
-    isPreview,
-    setIsPreview,
-    content,
-    setContent,
-}: Props) => {
+const TextEditor = ({ isPreview, setIsPreview }: Props) => {
+    const { draftState, setDraftState } = useContext(AppContext);
+
     const handleIconClick = () => setIsPreview(true);
     const handleChange = (e: any) => {
         const { value } = e.target;
-        setContent(value);
+        const updatedDraft = {
+            ...draftState,
+            content: value,
+        };
+
+        setDraftState(updatedDraft);
     };
 
     return (
@@ -36,7 +38,7 @@ const TextEditor = ({
             <ContentContainer>
                 <textarea
                     className="font-roboto-mono text-dark-gray dark:text-lighter-gray text-sm outline-none bg-white dark:bg-black w-full h-full pt-8 pb-12 px-6 resize-none transition-[background]"
-                    value={content}
+                    value={draftState?.content}
                     onChange={handleChange}
                 />
             </ContentContainer>

@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { AppContext } from '../../App';
+import { Data } from '../../types';
 import Burger from '../Burger';
 import Logo from '../Logo';
 import InputField from '../InputField';
@@ -5,12 +8,33 @@ import DeleteIcon from '../DeleteIcon';
 import Button from '../Button';
 import icon from '../../assets/icons/icon-save.svg';
 
-type Props = {
-    isNavOpen: boolean;
-    setIsNavOpen: (open: boolean) => void;
-};
+const Header = () => {
+    const {
+        isNavOpen,
+        setIsNavOpen,
+        selectedDocument,
+        setSelectedDocument,
+        documentList,
+        setDocumentList,
+        draftState,
+    } = useContext(AppContext);
 
-const Header = ({ isNavOpen, setIsNavOpen }: Props) => {
+    const handleSave = () => {
+        const updatedDoc = {
+            ...draftState,
+            createdAt: new Date().toLocaleDateString(),
+        };
+        const updatedList = documentList.map((doc: Data) => {
+            if (doc.id !== selectedDocument.id) {
+                return doc;
+            }
+            return updatedDoc;
+        });
+
+        setSelectedDocument(updatedDoc);
+        setDocumentList(updatedList);
+    };
+
     return (
         <div className="flex bg-gray h-14">
             <Burger isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
@@ -26,7 +50,7 @@ const Header = ({ isNavOpen, setIsNavOpen }: Props) => {
                     <Button
                         icon={icon}
                         label="Save changes"
-                        handleClick={() => {}}
+                        handleClick={handleSave}
                     />
                 </div>
             </div>

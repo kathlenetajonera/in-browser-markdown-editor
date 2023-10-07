@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { AppContext } from '../../App';
 import ContentHeader from '../ContentHeader';
 import ContentContainer from '../ContentContainer';
 import hideIcon from '../../assets/icons/icon-hide-preview.svg';
@@ -20,10 +22,10 @@ import CustomBlockquote from '../MarkdownElements/Blockquote';
 type Props = {
     isPreview: boolean;
     setIsPreview: (val: boolean) => void;
-    content: string;
 };
 
-const Preview = ({ isPreview, setIsPreview, content }: Props) => {
+const Preview = ({ isPreview, setIsPreview }: Props) => {
+    const { draftState } = useContext(AppContext);
     const handleIconClick = () => setIsPreview(!isPreview);
 
     const options = {
@@ -56,7 +58,7 @@ const Preview = ({ isPreview, setIsPreview, content }: Props) => {
                 handleIconClick={handleIconClick}
             />
             <ContentContainer customClass="font-roboto-slab overflow-y-auto pt-8 pb-12 px-6">
-                <Markdown options={options}>{content}</Markdown>
+                <Markdown options={options}>{draftState?.content}</Markdown>
             </ContentContainer>
         </div>
     );
