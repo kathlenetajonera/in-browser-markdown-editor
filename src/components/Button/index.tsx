@@ -1,16 +1,22 @@
+import Loading from '../Loading';
+
 type Props = {
+    isLoading?: boolean;
     icon?: string;
     label: string;
     handleClick: () => void;
 };
 
-const Button = ({ icon, label, handleClick }: Props) => {
+const Button = ({ isLoading, icon, label, handleClick }: Props) => {
     return (
         <button
             className="inline-flex items-center justify-center w-full bg-orange p-3 rounded-md cursor-pointer transition-[background] hover:bg-[#f39765]"
             onClick={handleClick}
         >
-            {icon && <img src={icon} alt="save" className="block w-6 md:w-5" />}
+            {icon && !isLoading && (
+                <img src={icon} alt="save" className="block w-6 md:w-5" />
+            )}
+            {isLoading && <Loading />}
             <p
                 className={`${
                     icon ? 'hidden' : ''
