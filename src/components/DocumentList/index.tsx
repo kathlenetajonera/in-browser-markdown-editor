@@ -8,7 +8,7 @@ const DocumentList = () => {
 
     return (
         <div className="mt-6">
-            {documentList.map(({ id, createdAt, name }: Data) => (
+            {documentList?.map(({ id, createdAt, name }: Data) => (
                 <DocumentItem
                     key={id}
                     id={id}

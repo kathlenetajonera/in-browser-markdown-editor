@@ -1,6 +1,13 @@
-const DeleteIcon = () => {
+type Props = {
+    handleClick: () => void;
+};
+
+const DeleteIcon = ({ handleClick }: Props) => {
     return (
-        <div className="block cursor-pointer mr-4 md:mr-5 fill-gray-text transition-[fill] hover:fill-orange">
+        <div
+            className="block cursor-pointer mr-4 md:mr-5 fill-gray-text transition-[fill] hover:fill-orange"
+            onClick={handleClick}
+        >
             <svg
                 width="18"
                 height="20"

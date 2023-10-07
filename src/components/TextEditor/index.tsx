@@ -38,7 +38,7 @@ const TextEditor = ({ isPreview, setIsPreview }: Props) => {
             <ContentContainer>
                 <textarea
                     className="font-roboto-mono text-dark-gray dark:text-lighter-gray text-sm outline-none bg-white dark:bg-black w-full h-full pt-8 pb-12 px-6 resize-none transition-[background]"
-                    value={draftState?.content}
+                    value={draftState.content}
                     onChange={handleChange}
                 />
             </ContentContainer>

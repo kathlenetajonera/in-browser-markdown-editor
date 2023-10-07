@@ -1,11 +1,26 @@
 import { useContext } from 'react';
 import { AppContext } from '../../App';
+import { Data } from '../../types';
 import Button from '../Button';
 import DocumentList from '../DocumentList';
 import ModeToggle from '../ModeToggle';
 
 const Sidebar = () => {
-    const { isNavOpen } = useContext(AppContext);
+    const { isNavOpen, setIsNavOpen, setDocumentList, setSelectedDocument } =
+        useContext(AppContext);
+
+    const handleAdd = () => {
+        const docTemplate = {
+            id: Date.now(),
+            createdAt: new Date().toLocaleDateString(),
+            name: 'untitled.md',
+            content: '# Create your new markdown here!',
+        };
+
+        setDocumentList((prev: Data[]) => [...prev, docTemplate]);
+        setSelectedDocument(docTemplate);
+        setIsNavOpen(false);
+    };
 
     return (
         <nav
@@ -16,7 +31,7 @@ const Sidebar = () => {
             <h3 className="text-gray-text mb-6 text-sm tracking-[2px]">
                 MY DOCUMENTS
             </h3>
-            <Button label="+ New Document" handleClick={() => {}} />
+            <Button label="+ New Document" handleClick={handleAdd} />
             <DocumentList />
             <ModeToggle />
         </nav>

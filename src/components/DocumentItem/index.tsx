@@ -11,17 +11,17 @@ type Props = {
 
 const DocumentItem = ({ id, createdAt, name }: Props) => {
     const {
+        setIsNavOpen,
         documentList,
         selectedDocument,
         setSelectedDocument,
-        setDraftState,
     } = useContext(AppContext);
     const isActive = selectedDocument?.id === id;
 
     const handleClick = () => {
         const selectedDoc = documentList.find((doc: Data) => doc.id === id);
         setSelectedDocument(selectedDoc);
-        setDraftState(selectedDoc);
+        setIsNavOpen(false);
     };
 
     return (

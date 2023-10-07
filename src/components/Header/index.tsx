@@ -18,6 +18,7 @@ const Header = () => {
         setDocumentList,
         draftState,
     } = useContext(AppContext);
+    const currentId = selectedDocument?.id;
 
     const handleSave = () => {
         const updatedDoc = {
@@ -25,7 +26,7 @@ const Header = () => {
             createdAt: new Date().toLocaleDateString(),
         };
         const updatedList = documentList.map((doc: Data) => {
-            if (doc.id !== selectedDocument.id) {
+            if (doc.id !== currentId) {
                 return doc;
             }
             return updatedDoc;
@@ -33,6 +34,22 @@ const Header = () => {
 
         setSelectedDocument(updatedDoc);
         setDocumentList(updatedList);
+    };
+
+    const handleDelete = () => {
+        const indexToDelete = documentList.findIndex(
+            (doc: Data) => doc.id === currentId
+        );
+        const updatedList = documentList.filter((doc: Data) => {
+            return doc.id !== currentId;
+        });
+        setDocumentList(updatedList);
+
+        if (updatedList.length > 0) {
+            setSelectedDocument(updatedList[indexToDelete - 1]);
+        } else {
+            setSelectedDocument(null);
+        }
     };
 
     return (
@@ -46,7 +63,7 @@ const Header = () => {
                 </div>
 
                 <div className="flex items-center">
-                    <DeleteIcon />
+                    <DeleteIcon handleClick={handleDelete} />
                     <Button
                         icon={icon}
                         label="Save changes"
